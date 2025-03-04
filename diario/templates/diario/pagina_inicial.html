@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Inicial - Diário Pessoal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'diario/styles.css' %}">
+</head>
+<body>
+    <h1>Bem-vindo ao Diário Pessoal</h1>
+    <a href="{% url 'diario:login' %}">Login</a> | <a href="{% url 'diario:registro' %}">Registrar</a>
+</body>
+</html>

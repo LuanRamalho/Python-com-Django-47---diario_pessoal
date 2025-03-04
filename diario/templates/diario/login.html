@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Diário Pessoal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'diario/styles.css' %}">
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Entrar</button>
+    </form>
+    <p>Não tem uma conta? <a href="{% url 'diario:registro' %}">Registre-se</a></p>
+</body>
+</html>

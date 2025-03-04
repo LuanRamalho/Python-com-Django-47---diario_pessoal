@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Entradas - Diário Pessoal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'diario/styles.css' %}">
+</head>
+<body>
+    <h1>Minhas Entradas</h1>
+    <ul>
+        {% for entrada in entradas %}
+            <li>{{ entrada.data|date:"d/m/Y" }}: {{ entrada.texto }}</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'diario:entrada_diario' %}">Criar nova entrada</a></p>
+</body>
+</html>
