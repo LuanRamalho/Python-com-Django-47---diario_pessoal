@@ -1,32 +1,52 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
-    text-align: center;
+    background-color: #f9f9f9;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
 }
 
-h1 {
-    color: #4682b4;
+.entrada {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
 }
 
-a {
-    color: #4682b4;
+.botoes {
+    margin-top: 10px;
+}
+
+.botao {
+    display: inline-block;
     text-decoration: none;
-    padding: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
-button {
-    background-color: #4682b4;
+.editar {
+    background-color: #4CAF50;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
 }
 
-button:hover {
-    background-color: #5f9ea0;
+.excluir {
+    background-color: #f44336;
+    color: white;
+}
+
+.novo {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 15px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 15px 0;
 }
