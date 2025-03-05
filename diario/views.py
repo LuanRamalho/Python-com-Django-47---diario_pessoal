@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import CadastroUsuarioForm, EntradaForm
@@ -55,3 +55,27 @@ def criar_entrada(request):
 def exibir_entradas(request):
     entradas = Entrada.objects.filter(user=request.user).order_by('-data')
     return render(request, 'diario/exibir_entradas.html', {'entradas': entradas})
+
+def editar_entrada(request, entrada_id):
+    entrada = get_object_or_404(Entrada, id=entrada_id, user=request.user)
+    
+    if request.method == "POST":
+        form = EntradaForm(request.POST, instance=entrada)
+        if form.is_valid():
+            form.save()
+            return redirect("diario/exibir_entradas")
+    else:
+        form = EntradaForm(instance=entrada)
+
+    return render(request, "diario/editar_entrada.html", {"form": form})
+
+@login_required
+# Excluir entrada
+def excluir_entrada(request, entrada_id):
+    entrada = get_object_or_404(Entrada, id=entrada_id, user=request.user)
+    
+    if request.method == "POST":
+        entrada.delete()
+        return redirect("diario/exibir_entradas")
+    
+    return render(request, "diario/excluir_entrada.html", {"entrada": entrada})
