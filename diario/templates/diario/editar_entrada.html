@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Entrada</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'diario/styles.css' %}">
+</head>
+<body>
+    <main>
+        <h2>Editar Entrada</h2>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label for="data">Data:</label>
+                <input type="text" id="data" name="data" value="{{ form.data.value }}" readonly>
+            </div>
+            <div>
+                <label for="texto">Texto:</label>
+                {{ form.texto }}
+            </div>
+            <button type="submit">Salvar alterações</button>
+        </form>
+
+        <p><a href="{% url 'diario:exibir_entradas' %}">Voltar para as entradas</a></p>
+    </main>
+</body>
+</html>
