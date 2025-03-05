@@ -2,17 +2,27 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Entradas - Diário Pessoal</title>
+    <title>Minhas Entradas - Diário Pessoal</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'diario/styles.css' %}">
 </head>
 <body>
     <h1>Minhas Entradas</h1>
-    <ul>
-        {% for entrada in entradas %}
-            <li>{{ entrada.data|date:"d/m/Y" }}: {{ entrada.texto }}</li>
-        {% endfor %}
-    </ul>
-    <p><a href="{% url 'diario:entrada_diario' %}">Criar nova entrada</a></p>
+
+    {% for entrada in entradas %}
+        <div class="entrada">
+            <p><strong>Data:</strong> {{ entrada.data|date:"d/m/Y H:i" }}</p>
+            <p>{{ entrada.texto }}</p>
+            <div class="botoes">
+                <a href="{% url 'diario:editar_entrada' entrada.id %}" class="botao editar">✏️ Editar</a>
+                <a href="{% url 'diario:excluir_entrada' entrada.id %}" class="botao excluir" onclick="return confirm('Tem certeza que deseja excluir esta entrada?');">❌ Excluir</a>
+            </div>
+        </div>
+        <hr> <!-- Separação entre entradas -->
+    {% empty %}
+        <p>Nenhuma entrada encontrada.</p>
+    {% endfor %}
+
+    <p><a href="{% url 'diario:entrada_diario' %}" class="botao novo">➕ Criar nova entrada</a></p>
 </body>
 </html>
