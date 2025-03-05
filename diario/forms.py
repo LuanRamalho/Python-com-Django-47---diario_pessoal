@@ -15,4 +15,4 @@ class CadastroUsuarioForm(UserCreationForm):
 class EntradaForm(forms.ModelForm):
     class Meta:
         model = Entrada
-        fields = ['texto']
+        fields = ["texto"]  
